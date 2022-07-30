@@ -7,23 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B6D0BC82895884100B70804 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6D0BC72895884100B70804 /* DetailsViewController.swift */; };
 		3BB50AA62894524800C69D4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB50AA52894524800C69D4F /* AppDelegate.swift */; };
 		3BB50AA82894524800C69D4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB50AA72894524800C69D4F /* SceneDelegate.swift */; };
-		3BB50AAA2894524800C69D4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB50AA92894524800C69D4F /* ViewController.swift */; };
-		3BB50AAD2894524800C69D4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BB50AAB2894524800C69D4F /* Main.storyboard */; };
 		3BB50AAF2894524B00C69D4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BB50AAE2894524B00C69D4F /* Assets.xcassets */; };
 		3BB50AB22894524B00C69D4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BB50AB02894524B00C69D4F /* LaunchScreen.storyboard */; };
+		3BB50ABB289455A300C69D4F /* CoinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB50ABA289455A300C69D4F /* CoinsViewController.swift */; };
+		3BD7915A289458DB00E1B8FD /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD79159289458DB00E1B8FD /* Coin.swift */; };
+		3BD7915D28945A7100E1B8FD /* WebServlce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD7915C28945A7100E1B8FD /* WebServlce.swift */; };
+		3BD791612894667C00E1B8FD /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD791602894667C00E1B8FD /* UIViewExtension.swift */; };
+		3BD79163289486EE00E1B8FD /* CoinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD79162289486EE00E1B8FD /* CoinTableViewCell.swift */; };
+		3BD79165289492E700E1B8FD /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD79164289492E700E1B8FD /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B6D0BC72895884100B70804 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		3BB50AA22894524800C69D4F /* CoinGecko_REST_API.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinGecko_REST_API.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BB50AA52894524800C69D4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BB50AA72894524800C69D4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3BB50AA92894524800C69D4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3BB50AAC2894524800C69D4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3BB50AAE2894524B00C69D4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BB50AB12894524B00C69D4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BB50AB32894524B00C69D4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3BB50ABA289455A300C69D4F /* CoinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsViewController.swift; sourceTree = "<group>"; };
+		3BD79159289458DB00E1B8FD /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		3BD7915C28945A7100E1B8FD /* WebServlce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServlce.swift; sourceTree = "<group>"; };
+		3BD791602894667C00E1B8FD /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		3BD79162289486EE00E1B8FD /* CoinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinTableViewCell.swift; sourceTree = "<group>"; };
+		3BD79164289492E700E1B8FD /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +66,60 @@
 		3BB50AA42894524800C69D4F /* CoinGecko_REST_API */ = {
 			isa = PBXGroup;
 			children = (
-				3BB50AA52894524800C69D4F /* AppDelegate.swift */,
-				3BB50AA72894524800C69D4F /* SceneDelegate.swift */,
-				3BB50AA92894524800C69D4F /* ViewController.swift */,
-				3BB50AAB2894524800C69D4F /* Main.storyboard */,
-				3BB50AAE2894524B00C69D4F /* Assets.xcassets */,
-				3BB50AB02894524B00C69D4F /* LaunchScreen.storyboard */,
-				3BB50AB32894524B00C69D4F /* Info.plist */,
+				3BD791572894588400E1B8FD /* Models */,
+				3BD791582894588E00E1B8FD /* Controllers */,
+				3BD7915B28945A3E00E1B8FD /* WebServices */,
+				3BD7915E28945AE000E1B8FD /* Extensions */,
+				3BB50AB9289454D800C69D4F /* Resources */,
 			);
 			path = CoinGecko_REST_API;
+			sourceTree = "<group>";
+		};
+		3BB50AB9289454D800C69D4F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3BB50AA52894524800C69D4F /* AppDelegate.swift */,
+				3BB50AA72894524800C69D4F /* SceneDelegate.swift */,
+				3BB50AB02894524B00C69D4F /* LaunchScreen.storyboard */,
+				3BB50AAE2894524B00C69D4F /* Assets.xcassets */,
+				3BB50AB32894524B00C69D4F /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3BD791572894588400E1B8FD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3BD79159289458DB00E1B8FD /* Coin.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3BD791582894588E00E1B8FD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3BB50ABA289455A300C69D4F /* CoinsViewController.swift */,
+				3BD79162289486EE00E1B8FD /* CoinTableViewCell.swift */,
+				3B6D0BC72895884100B70804 /* DetailsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3BD7915B28945A3E00E1B8FD /* WebServices */ = {
+			isa = PBXGroup;
+			children = (
+				3BD7915C28945A7100E1B8FD /* WebServlce.swift */,
+				3BD79164289492E700E1B8FD /* NetworkError.swift */,
+			);
+			path = WebServices;
+			sourceTree = "<group>";
+		};
+		3BD7915E28945AE000E1B8FD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3BD791602894667C00E1B8FD /* UIViewExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +182,6 @@
 			files = (
 				3BB50AB22894524B00C69D4F /* LaunchScreen.storyboard in Resources */,
 				3BB50AAF2894524B00C69D4F /* Assets.xcassets in Resources */,
-				3BB50AAD2894524800C69D4F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +192,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BB50AAA2894524800C69D4F /* ViewController.swift in Sources */,
+				3BD7915D28945A7100E1B8FD /* WebServlce.swift in Sources */,
+				3BD79165289492E700E1B8FD /* NetworkError.swift in Sources */,
+				3B6D0BC82895884100B70804 /* DetailsViewController.swift in Sources */,
+				3BB50ABB289455A300C69D4F /* CoinsViewController.swift in Sources */,
 				3BB50AA62894524800C69D4F /* AppDelegate.swift in Sources */,
+				3BD7915A289458DB00E1B8FD /* Coin.swift in Sources */,
+				3BD791612894667C00E1B8FD /* UIViewExtension.swift in Sources */,
 				3BB50AA82894524800C69D4F /* SceneDelegate.swift in Sources */,
+				3BD79163289486EE00E1B8FD /* CoinTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3BB50AAB2894524800C69D4F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3BB50AAC2894524800C69D4F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3BB50AB02894524B00C69D4F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -289,10 +341,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G3VP62JDQQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CoinGecko_REST_API/Info.plist;
+				INFOPLIST_FILE = CoinGecko_REST_API/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -317,10 +368,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G3VP62JDQQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CoinGecko_REST_API/Info.plist;
+				INFOPLIST_FILE = CoinGecko_REST_API/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
