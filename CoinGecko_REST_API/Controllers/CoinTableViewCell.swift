@@ -112,7 +112,7 @@ class CoinTableViewCell: UITableViewCell {
     }
     
     // MARK: - Views
-    let coinImageView: UIImageView = {
+    private let coinImageView: UIImageView = {
         let image = UIImageView()
         image.layer.masksToBounds = true
         image.contentMode = .scaleToFill
@@ -120,21 +120,21 @@ class CoinTableViewCell: UITableViewCell {
         return image
     }()
     
-    let nameLabel: UILabel = {
+    private let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20.0)
         
         return label
     }()
     
-    let priceLabel: UILabel = {
+    private let priceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
         
         return label
     }()
     
-    let percentageLabel: UILabel = {
+    private let percentageLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
         

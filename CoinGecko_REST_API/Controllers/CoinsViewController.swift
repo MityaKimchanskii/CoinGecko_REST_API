@@ -11,7 +11,7 @@ import UIKit
 class CoinsViewController: UIViewController {
     
     // MARK: - Properties
-    var coins: [Coin] = []
+    private var coins: [Coin] = []
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -68,7 +68,7 @@ class CoinsViewController: UIViewController {
     }
     
     // MARK: - Views
-    let coinListTableView: UITableView = {
+    private let coinListTableView: UITableView = {
         let tableView = UITableView()
         
         return tableView

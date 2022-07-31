@@ -25,7 +25,7 @@ class DetailsViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @objc func closeButtonTapped(sender: UIButton) {
+    @objc private func closeButtonTapped(sender: UIButton) {
         self.dismiss(animated: true)
     }
     
@@ -134,7 +134,7 @@ class DetailsViewController: UIViewController {
     }
    
     // MARK: - Views
-    let coinImageView: UIImageView = {
+    private let coinImageView: UIImageView = {
         let image = UIImageView()
         image.layer.masksToBounds = true
         image.contentMode = .scaleAspectFit
@@ -142,7 +142,7 @@ class DetailsViewController: UIViewController {
         return image
     }()
     
-    let nameLabel: UILabel = {
+    private let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 30)
         label.textAlignment = .center
@@ -150,14 +150,14 @@ class DetailsViewController: UIViewController {
         return label
     }()
     
-    let priceLabel: UILabel = {
+    private let priceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         
         return label
     }()
     
-    let percentageLabel: UILabel = {
+    private let percentageLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textColor = .darkGray
@@ -165,7 +165,7 @@ class DetailsViewController: UIViewController {
         return label
     }()
     
-    let percentage7DLabel: UILabel = {
+    private let percentage7DLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 15)
         label.textColor = .darkGray
@@ -173,7 +173,7 @@ class DetailsViewController: UIViewController {
         return label
     }()
     
-    let percentage14DLabel: UILabel = {
+    private let percentage14DLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 15)
         label.textColor = .darkGray
@@ -181,7 +181,7 @@ class DetailsViewController: UIViewController {
         return label
     }()
     
-    let percentage30DLabel: UILabel = {
+    private let percentage30DLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 15)
         label.textColor = .darkGray
@@ -189,7 +189,7 @@ class DetailsViewController: UIViewController {
         return label
     }()
     
-    let percentage60DLabel: UILabel = {
+    private let percentage60DLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 15)
         label.textColor = .darkGray
@@ -197,7 +197,7 @@ class DetailsViewController: UIViewController {
         return label
     }()
     
-    let percentage200DLabel: UILabel = {
+    private let percentage200DLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 15)
         label.textColor = .darkGray
@@ -205,7 +205,7 @@ class DetailsViewController: UIViewController {
         return label
     }()
     
-    let percentage1YearLabel: UILabel = {
+    private let percentage1YearLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 15)
         label.textColor = .darkGray
@@ -213,7 +213,7 @@ class DetailsViewController: UIViewController {
         return label
     }()
     
-    let totalSupplyLabel: UILabel = {
+    private let totalSupplyLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 15)
         label.textColor = .darkGray
@@ -221,7 +221,7 @@ class DetailsViewController: UIViewController {
         return label
     }()
     
-    let marketCapRankLabel: UILabel = {
+    private let marketCapRankLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 15)
         label.textColor = .darkGray
@@ -229,7 +229,7 @@ class DetailsViewController: UIViewController {
         return label
     }()
     
-    let labelsContainer: UIStackView = {
+    private let labelsContainer: UIStackView = {
         let container = UIStackView()
         container.axis = .vertical
         container.alignment = .fill
@@ -239,7 +239,7 @@ class DetailsViewController: UIViewController {
         return container
     }()
     
-    let closeButton: UIButton = {
+    private let closeButton: UIButton = {
         let button = UIButton()
         button.setTitle("❌", for: .normal)
         button.tintColor = .red
