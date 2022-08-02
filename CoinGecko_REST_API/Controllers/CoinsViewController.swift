@@ -13,6 +13,18 @@ class CoinsViewController: UIViewController {
     // MARK: - Properties
     private var coins: [Coin] = []
     
+    private enum CoinsViewMetrics {
+        static let rowHeight: CGFloat = 100
+        static let noPadding: CGFloat = 0
+    }
+    
+    // MARK: - Views
+    private let coinListTableView: UITableView = {
+        let tableView = UITableView()
+        
+        return tableView
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,10 +51,10 @@ class CoinsViewController: UIViewController {
                                  bottom: self.view.safeAreaLayoutGuide.bottomAnchor,
                                  leading: self.view.safeAreaLayoutGuide.leadingAnchor,
                                  trailing: self.view.safeAreaLayoutGuide.trailingAnchor,
-                                 paddingTop: 0,
-                                 paddingBottom: 0,
-                                 paddingLeft: 0,
-                                 paddingRight: 0)
+                                 paddingTop: CoinsViewMetrics.noPadding,
+                                 paddingBottom: CoinsViewMetrics.noPadding,
+                                 paddingLeft: CoinsViewMetrics.noPadding,
+                                 paddingRight: CoinsViewMetrics.noPadding)
     }
     
     private func configureTableView() {
@@ -66,13 +78,6 @@ class CoinsViewController: UIViewController {
             }
         }
     }
-    
-    // MARK: - Views
-    private let coinListTableView: UITableView = {
-        let tableView = UITableView()
-        
-        return tableView
-    }()
 }
 
 // MARK: - Extensions
@@ -96,6 +101,6 @@ extension CoinsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return CoinsViewMetrics.rowHeight
     }
 }

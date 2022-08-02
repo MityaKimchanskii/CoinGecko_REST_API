@@ -16,14 +16,64 @@ class CoinTableViewCell: UITableViewCell {
         }
     }
     
+    private enum CoinTableViewCellMetrics {
+        static let nameFontSize: CGFloat = 30.0
+        static let smallFontSize: CGFloat = 15.0
+        static let largeFontSize: CGFloat = 20.0
+        static let padding: CGFloat = 25.0
+        static let smallPadding: CGFloat = 8.0
+        static let coinImagewidthAndHeight: CGFloat = 50.0
+        static let cornerRadius: CGFloat = 5.0
+        static let heightArrowImage: CGFloat = 30.0
+        static let widthArrowImage: CGFloat = 20.0
+    }
+    
+    // MARK: - Views
+    private let coinImageView: UIImageView = {
+        let image = UIImageView()
+        image.layer.masksToBounds = true
+        image.contentMode = .scaleToFill
+
+        return image
+    }()
+    
+    private let arrowImageView: UIImageView = {
+        let image = UIImageView()
+        image.layer.masksToBounds = true
+        image.contentMode = .scaleToFill
+        image.image = UIImage(systemName: "chevron.compact.right")
+        image.tintColor = .lightGray
+        
+        return image
+    }()
+    
+    private let labelContainer: UIStackView = {
+        let container = UIStackView()
+        container.axis = .vertical
+        container.alignment = .leading
+        container.distribution = .fillProportionally
+
+        return container
+    }()
+    
+    private let nameLabel: UILabel = UILabel(textColor: .black, fontSize: CoinTableViewCellMetrics.largeFontSize, fontWeight: .bold, textAlignment: .left)
+    private let priceLabel: UILabel = UILabel(textColor: .black, fontSize: CoinTableViewCellMetrics.smallFontSize, fontWeight: .regular, textAlignment: .left)
+   
+    private let percentageLabel: UILabel = {
+        let label = UILabel(textColor: .black, fontSize: CoinTableViewCellMetrics.smallFontSize, fontWeight: .regular, textAlignment: .left)
+        label.layer.cornerRadius = CoinTableViewCellMetrics.cornerRadius
+        label.layer.masksToBounds = true
+        
+        return label
+    }()
+    
     // MARK: - Lifecycle
     override func layoutSubviews() {
         super.layoutSubviews()
         addAllSubviews()
         constraintCoinImageView()
-        constraintCoinNameLabel()
-        constraintCoinPriceLabel()
-        constraintPercentageLabel()
+        constraintLabelContainer()
+        constraintArrowImage()
     }
     
     // MARK: - Helper Methods
@@ -36,9 +86,11 @@ class CoinTableViewCell: UITableViewCell {
         priceLabel.text = "$\(coin.market.price.usd)"
         
         if coin.market.priceChange24HPercentage < 0 {
-            percentageLabel.textColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+            percentageLabel.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+            percentageLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         } else {
-            percentageLabel.textColor = #colorLiteral(red: 0, green: 0.5603182912, blue: 0, alpha: 1)
+            percentageLabel.backgroundColor = #colorLiteral(red: 0, green: 0.5603182912, blue: 0, alpha: 1)
+            percentageLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
         percentageLabel.text = "\(coin.market.priceChange24HPercentage)%"
     }
@@ -59,9 +111,8 @@ class CoinTableViewCell: UITableViewCell {
     
     private func addAllSubviews() {
         self.addSubview(coinImageView)
-        self.addSubview(nameLabel)
-        self.addSubview(priceLabel)
-        self.addSubview(percentageLabel)
+        self.addSubview(labelContainer)
+        self.addSubview(arrowImageView)
     }
     
     // MARK: - Constraints
@@ -70,74 +121,36 @@ class CoinTableViewCell: UITableViewCell {
                              bottom: self.contentView.bottomAnchor,
                              leading: self.contentView.leadingAnchor,
                              trailing: nil,
-                             paddingTop: 25,
-                             paddingBottom: 25,
-                             paddingLeft: 25,
-                             paddingRight: 0,
-                             width: 50,
-                             height: 50)
+                             paddingTop: CoinTableViewCellMetrics.padding,
+                             paddingBottom: CoinTableViewCellMetrics.padding,
+                             paddingLeft: CoinTableViewCellMetrics.padding,
+                             paddingRight: CoinTableViewCellMetrics.padding,
+                             width: CoinTableViewCellMetrics.coinImagewidthAndHeight,
+                             height: CoinTableViewCellMetrics.coinImagewidthAndHeight)
     }
     
-    private func constraintCoinNameLabel() {
-        nameLabel.anchor(top: self.contentView.topAnchor,
-                         bottom: self.priceLabel.topAnchor,
-                         leading: self.coinImageView.trailingAnchor,
-                         trailing: self.contentView.trailingAnchor,
-                         paddingTop: 15,
-                         paddingBottom: 8,
-                         paddingLeft: 25,
-                         paddingRight: 0)
-    }
-
-    private func constraintCoinPriceLabel() {
-        priceLabel.anchor(top: nil,
-                          bottom: nil,
-                          leading: self.coinImageView.trailingAnchor,
-                          trailing: nil,
-                          paddingTop: 0,
-                          paddingBottom: 0,
-                          paddingLeft: 25,
-                          paddingRight: 0)
-    }
-
-    private func constraintPercentageLabel() {
-        percentageLabel.anchor(top: self.priceLabel.bottomAnchor,
-                               bottom: self.contentView.bottomAnchor,
-                               leading: self.coinImageView.trailingAnchor,
-                               trailing: nil,
-                               paddingTop: 0,
-                               paddingBottom: 10,
-                               paddingLeft: 25,
-                               paddingRight: 0)
-    }
-    
-    // MARK: - Views
-    private let coinImageView: UIImageView = {
-        let image = UIImageView()
-        image.layer.masksToBounds = true
-        image.contentMode = .scaleToFill
-
-        return image
-    }()
-    
-    private let nameLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20.0)
+    private func constraintLabelContainer() {
+        labelContainer.addArrangedSubview(nameLabel)
+        labelContainer.addArrangedSubview(priceLabel)
+        labelContainer.addArrangedSubview(percentageLabel)
+        labelContainer.translatesAutoresizingMaskIntoConstraints = false
         
-        return label
-    }()
+        NSLayoutConstraint.activate([
+            labelContainer.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            labelContainer.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -CoinTableViewCellMetrics.smallPadding),
+            labelContainer.leadingAnchor.constraint(equalTo: coinImageView.trailingAnchor, constant: CoinTableViewCellMetrics.padding),
+            labelContainer.trailingAnchor.constraint(equalTo: arrowImageView.leadingAnchor, constant: -CoinTableViewCellMetrics.padding)
+        ])
+    }
     
-    private let priceLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15)
+    private func constraintArrowImage() {
+        arrowImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        return label
-    }()
-    
-    private let percentageLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15)
-        
-        return label
-    }()
+        NSLayoutConstraint.activate([
+            arrowImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            arrowImageView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -CoinTableViewCellMetrics.padding),
+            arrowImageView.widthAnchor.constraint(equalToConstant: CoinTableViewCellMetrics.widthArrowImage),
+            arrowImageView.heightAnchor.constraint(equalToConstant: CoinTableViewCellMetrics.heightArrowImage)
+        ])
+    }
 }

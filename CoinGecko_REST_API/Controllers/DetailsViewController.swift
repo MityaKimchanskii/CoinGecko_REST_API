@@ -13,13 +13,70 @@ class DetailsViewController: UIViewController {
     // MARK: - Properties
     var coin: Coin?
     
+    private enum DetailsViewMetrics {
+        static let nameFontSize: CGFloat = 30
+        static let smallFontSize: CGFloat = 15.0
+        static let largeFontSize: CGFloat = 20.0
+        static let imageWidthAndHeight: CGFloat = 150
+        static let closeButtonWidthAndHeight: CGFloat = 40
+        static let padding: CGFloat = 20
+        static let smallPadding: CGFloat = 10
+        static let labelContainerHeight: CGFloat = 300
+        static let noPadding: CGFloat = 0
+    }
+    
+    // MARK: - Views
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return scrollView
+    }()
+    
+    private let coinImageView: UIImageView = {
+        let image = UIImageView()
+        image.layer.masksToBounds = true
+        image.contentMode = .scaleAspectFit
+        
+        return image
+    }()
+    
+    private let nameLabel: UILabel = UILabel(textColor: .black, fontSize: DetailsViewMetrics.nameFontSize, fontWeight: .bold, textAlignment: .center)
+    private let priceLabel: UILabel = UILabel(textColor: .darkGray, fontSize: DetailsViewMetrics.smallFontSize, fontWeight: .bold, textAlignment: .left)
+    private let percentageLabel: UILabel = UILabel(textColor: .darkGray, fontSize: DetailsViewMetrics.smallFontSize, fontWeight: .bold, textAlignment: .left)
+    private let percentage7DLabel: UILabel = UILabel(textColor: .darkGray, fontSize: DetailsViewMetrics.smallFontSize, fontWeight: .light, textAlignment: .left)
+    private let percentage14DLabel: UILabel = UILabel(textColor: .darkGray, fontSize: DetailsViewMetrics.smallFontSize, fontWeight: .light, textAlignment: .left)
+    private let percentage30DLabel: UILabel = UILabel(textColor: .darkGray, fontSize: DetailsViewMetrics.smallFontSize, fontWeight: .light, textAlignment: .left)
+    private let percentage60DLabel: UILabel = UILabel(textColor: .darkGray, fontSize: DetailsViewMetrics.smallFontSize, fontWeight: .light, textAlignment: .left)
+    private let percentage200DLabel: UILabel = UILabel(textColor: .darkGray, fontSize: DetailsViewMetrics.smallFontSize, fontWeight: .light, textAlignment: .left)
+    private let percentage1YearLabel: UILabel = UILabel(textColor: .darkGray, fontSize: DetailsViewMetrics.smallFontSize, fontWeight: .light, textAlignment: .left)
+    private let totalSupplyLabel: UILabel = UILabel(textColor: .darkGray, fontSize: DetailsViewMetrics.smallFontSize, fontWeight: .bold, textAlignment: .left)
+    private let marketCapRankLabel: UILabel = UILabel(textColor: .darkGray, fontSize: DetailsViewMetrics.smallFontSize, fontWeight: .bold, textAlignment: .left)
+    
+    private let labelsContainer: UIStackView = {
+        let container = UIStackView()
+        container.axis = .vertical
+        container.alignment = .fill
+        container.distribution = .fillProportionally
+        
+        return container
+    }()
+    
+    private let closeButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("❌", for: .normal)
+        button.tintColor = .red
+        
+        return button
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
         addAllSubviews()
         constraintСontainer()
-        constaintImageView()
+        constraintImageView()
         constraintCloseButton()
         activateCloseButton()
     }
@@ -84,29 +141,25 @@ class DetailsViewController: UIViewController {
     
     // MARK: - Constraints
     private func constraintCloseButton() {
-        closeButton.anchor(top: self.view.topAnchor,
-                           bottom: nil,
-                           leading: self.view.leadingAnchor,
-                           trailing: nil,
-                           paddingTop: 10,
-                           paddingBottom: 0,
-                           paddingLeft: self.view.frame.width - 60,
-                           paddingRight: 0,
-                           width: 40,
-                           height: 40)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            closeButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: DetailsViewMetrics.smallPadding),
+            closeButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -DetailsViewMetrics.smallPadding),
+            closeButton.widthAnchor.constraint(equalToConstant: DetailsViewMetrics.closeButtonWidthAndHeight),
+            closeButton.heightAnchor.constraint(equalToConstant: DetailsViewMetrics.closeButtonWidthAndHeight)
+        ])
     }
     
-    private func constaintImageView() {
-        coinImageView.anchor(top: self.closeButton.bottomAnchor,
-                             bottom: nil,
-                             leading: nil,
-                             trailing: self.view.trailingAnchor,
-                             paddingTop: 10,
-                             paddingBottom: 0,
-                             paddingLeft: 0,
-                             paddingRight: 0,
-                             width: self.view.frame.width,
-                             height: 150)
+    private func constraintImageView() {
+        coinImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            coinImageView.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: DetailsViewMetrics.noPadding),
+            coinImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            coinImageView.widthAnchor.constraint(equalToConstant: DetailsViewMetrics.imageWidthAndHeight),
+            coinImageView.heightAnchor.constraint(equalToConstant: DetailsViewMetrics.imageWidthAndHeight),
+        ])
     }
     
     private func constraintСontainer() {
@@ -123,127 +176,13 @@ class DetailsViewController: UIViewController {
         labelsContainer.addArrangedSubview(marketCapRankLabel)
         
         labelsContainer.anchor(top: self.coinImageView.bottomAnchor,
-                         bottom: nil,
-                         leading: self.view.leadingAnchor,
-                         trailing: self.view.trailingAnchor,
-                         paddingTop: 10,
-                         paddingBottom: 0,
-                         paddingLeft: 23,
-                         paddingRight: 23,
-                         height: 300)
+                               bottom: nil,
+                               leading: self.view.leadingAnchor,
+                               trailing: self.view.trailingAnchor,
+                               paddingTop: DetailsViewMetrics.smallPadding,
+                               paddingBottom: DetailsViewMetrics.noPadding,
+                               paddingLeft: DetailsViewMetrics.padding,
+                               paddingRight: DetailsViewMetrics.padding,
+                               height: DetailsViewMetrics.labelContainerHeight)
     }
-   
-    // MARK: - Views
-    private let coinImageView: UIImageView = {
-        let image = UIImageView()
-        image.layer.masksToBounds = true
-        image.contentMode = .scaleAspectFit
-        
-        return image
-    }()
-    
-    private let nameLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 30)
-        label.textAlignment = .center
-        
-        return label
-    }()
-    
-    private let priceLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20)
-        
-        return label
-    }()
-    
-    private let percentageLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.textColor = .darkGray
-        
-        return label
-    }()
-    
-    private let percentage7DLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textColor = .darkGray
-        
-        return label
-    }()
-    
-    private let percentage14DLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textColor = .darkGray
-        
-        return label
-    }()
-    
-    private let percentage30DLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textColor = .darkGray
-        
-        return label
-    }()
-    
-    private let percentage60DLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textColor = .darkGray
-        
-        return label
-    }()
-    
-    private let percentage200DLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textColor = .darkGray
-        
-        return label
-    }()
-    
-    private let percentage1YearLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textColor = .darkGray
-        
-        return label
-    }()
-    
-    private let totalSupplyLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textColor = .darkGray
-        
-        return label
-    }()
-    
-    private let marketCapRankLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textColor = .darkGray
-        
-        return label
-    }()
-    
-    private let labelsContainer: UIStackView = {
-        let container = UIStackView()
-        container.axis = .vertical
-        container.alignment = .fill
-        container.distribution = .fillProportionally
-        container.translatesAutoresizingMaskIntoConstraints = false
-
-        return container
-    }()
-    
-    private let closeButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("❌", for: .normal)
-        button.tintColor = .red
-    
-        return button
-    }()
 }
