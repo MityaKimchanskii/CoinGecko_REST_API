@@ -26,13 +26,6 @@ class DetailsViewController: UIViewController {
     }
     
     // MARK: - Views
-    private let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return scrollView
-    }()
-    
     private let coinImageView: UIImageView = {
         let image = UIImageView()
         image.layer.masksToBounds = true
