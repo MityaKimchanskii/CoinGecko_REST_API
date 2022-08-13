@@ -1,19 +1,12 @@
 #CoinGecko*
 
-**Prework** is a tip calculator application for iOS.
-
 Submitted by: **Dmityrii Kim**
 
 Time spent: **9** hours spent in total
 
-The following **optional** features are implemented:
-
 * [+] REST API
 * [+] JSON
-
-## Video Walkthrough
-
-Here's a walkthrough of implemented user stories:
+* [+] All views programmatically 
 
 <img src='https://github.com/MityaKimchanskii/CoinGecko_REST_API/blob/main/CoinGecko.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
